@@ -4,6 +4,7 @@ import { Followers } from '../../Data/FollowersData'
 const FollowersCard = () => {
   return (
     <div className='followerCard'>
+      <h3> Who is following you</h3>
       {Followers.map((follower, id) =>
        (
         <div className='follower'>
