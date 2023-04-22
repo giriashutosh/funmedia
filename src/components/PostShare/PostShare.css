@@ -20,7 +20,7 @@
 }
 
 .PostShare>div>input{
-background-color: var(inputColor);
+background-color: var(--inputColor);
 border-radius: 10px;
 padding: 10px;
 font-size: 17px;
@@ -34,7 +34,7 @@ outline: none;
 }
 
 .option{
-  padding: 5xp;
+  padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 10px;
@@ -53,4 +53,22 @@ outline: none;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 12px;
+}
+
+.previewImage {
+    position: relative;
+}
+
+.previewImage > svg {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    cursor: pointer;
+}
+
+.previewImage > img{
+    width: 100%;
+    max-height: 20rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
 }
