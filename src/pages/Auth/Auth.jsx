@@ -18,7 +18,12 @@ const Auth = () => {
     const [confirmPass, setConfirmPass] = useState(true);
     const loading = useSelector((state) => state.authReducer.loading)
     const dispatch = useDispatch()
-
+   
+    // Reset Form
+    const resetForm = () => {
+        setData(initialState)
+        setConfirmPass(confirmPass)
+    }
     //handle Change in input
     const handleChange = (e) => {
         console.log(e.target.name)
@@ -29,7 +34,7 @@ const Auth = () => {
         
         setConfirmPass(true)
         e.preventDefault()
-        if (signUp) {
+        if (isSignUp) {
             if (data.password === data.confirmpass) {
                 dispatch(signUp(data))
             } else {
@@ -88,7 +93,7 @@ const Auth = () => {
                     </div>
                     <div>
                         <input
-                            type='text'
+                            type='password'
                             placeholder='Password'
                             className='infoInput'
                             name='password' 
@@ -96,7 +101,7 @@ const Auth = () => {
                             onChange={handleChange}
                             />
                         {isSignUp && (<input
-                            type='text'
+                            type='password'
                             placeholder='Confirm Password'
                             className='infoInput'
                             name='confirmpass' 
@@ -118,7 +123,7 @@ const Auth = () => {
                                 textDecoration: "underline",
                             }}
                             onClick={() => {
-
+                                resetForm();
                                 setIsSignUp((prev) => !prev);
                             }}
                         >
