@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Logo from '../../img/logo.png'
 import './Auth.css'
+import { useDispatch } from 'react-redux';
 
 const Auth = () => {
     const initialState = {
@@ -14,6 +15,7 @@ const Auth = () => {
     const [isSignUp, setIsSignUp] = useState(false)
     const [data, setData] = useState(initialState)
     const [confirmPass, setConfirmPass] = useState(true);
+    const dispatch = useDispatch()
 
     //handle Change in input
     const handleChange = (e) => {
@@ -23,6 +25,10 @@ const Auth = () => {
    
     const handleSubmit = (e) => {
         e.preventDefault()
+        setConfirmPass(true)
+        if () {
+            
+        }
     }
     return (
         // left side
