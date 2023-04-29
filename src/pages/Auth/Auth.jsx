@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Logo from '../../img/logo.png'
 import './Auth.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, signUp } from '../../actions/AuthAction';
 
 const Auth = () => {
     const initialState = {
@@ -15,6 +16,7 @@ const Auth = () => {
     const [isSignUp, setIsSignUp] = useState(false)
     const [data, setData] = useState(initialState)
     const [confirmPass, setConfirmPass] = useState(true);
+    const loading = useSelector((state) => state.authReducer.loading)
     const dispatch = useDispatch()
 
     //handle Change in input
@@ -24,11 +26,19 @@ const Auth = () => {
     }
    
     const handleSubmit = (e) => {
-        e.preventDefault()
+        
         setConfirmPass(true)
-        if () {
-            
+        e.preventDefault()
+        if (signUp) {
+            if (data.password === data.confirmpass) {
+                dispatch(signUp(data))
+            } else {
+                setConfirmPass(false)
+            }
+        } else {
+            dispatch(logIn(data))
         }
+        
     }
     return (
         // left side
@@ -93,7 +103,13 @@ const Auth = () => {
                             onChange={handleChange}
                             />)}
                     </div>
-                    {/* <span style={{}}>*Confirm password is not same</span> */}
+                    <span style={{
+                        color: "red",
+                        fontSize: "12px",
+                        alignSelf: "flex-end",
+                        marginRight: "5px",
+                        display: confirmPass ? "none" : "block"
+                    }}>*Confirm password is not same</span>
                     <div>
                         <span
                             style={{
@@ -113,9 +129,9 @@ const Auth = () => {
                         <button
                             className="button infoButton"
                             type="Submit"
-
+                            disabled= {loading}
                         >
-                            {isSignUp ? "SignUp" : "Login"}
+                            {loading ? "Loading..." : isSignUp ? "SignUp" : "Login"}
                         </button>
                     </div>
 
