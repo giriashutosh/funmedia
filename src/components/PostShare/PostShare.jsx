@@ -17,6 +17,7 @@ const PostShare = () => {
     const imageRef = useRef()
     const desc = useRef()
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+    console.log(serverPublic)
     console.log(user)
     //handle Image Change
     const onImageChange = (event) => {
