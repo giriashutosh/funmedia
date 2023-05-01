@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react'
-import ProfileImage from '../../img/profileImg.jpg'
+
 import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
@@ -10,13 +10,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import './PostShare.css'
 import { uploadImage, uploadPost } from '../../actions/UploadAction';
 const PostShare = () => {
-    const { user } = useSelector((state) => state.authReducer.authData)
+    const  user  = useSelector((state) => state.authReducer.authData)
+    const loading = useSelector((state) => state.postReducer.uploading);
     const dispatch = useDispatch();
     const [image, setImage] = useState(null)
     const imageRef = useRef()
     const desc = useRef()
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-
+    console.log(user)
     //handle Image Change
     const onImageChange = (event) => {
         if (event.target && event.target.files[0]) {
@@ -54,7 +55,7 @@ const PostShare = () => {
     }
   return (
     <div className='PostShare'>
-          <img src={ProfileImage} alt='' />
+          <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt='' />
           <div>
               <input type='text' placeholder="What's happening" required ref={desc} />
               <div className='postOptions'>
@@ -75,7 +76,12 @@ const PostShare = () => {
                       <UilSchedule />
                       Schedule
                   </div>
-                  <button className='button ps-button'>Share</button>
+                  <button
+                      className='button ps-button'
+                      onClick={handlePostUpload}
+                      disabled = {loading}
+                  >{loading ? 'uploading' : 'Share'}
+                  </button>
                   <div style={{display: 'none'}}>
                       <input type='file' name = "myImage" ref={imageRef} onChange={onImageChange}></input>
                   </div>
