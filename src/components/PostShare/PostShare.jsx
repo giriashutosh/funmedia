@@ -53,7 +53,15 @@ const PostShare = () => {
             }
         }
         dispatch(uploadPost(newPost))
+        resetShare();
     }
+
+    //reset
+    const resetShare = () => {
+        setImage(null);
+        desc.current.value = "";
+    }
+
   return (
     <div className='PostShare'>
           <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt='' />

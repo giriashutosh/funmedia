@@ -3,7 +3,7 @@ import Cover from '../../img/cover.jpg'
 import Profile from '../../img/profileImg.jpg'
 import './ProfileCard.css'
 const ProfileCard = () => {
-    const profilePage = true; 
+const profilePage = false; 
   return (
     <div className='ProfileCard'>
           <div className='ProfileImages'>
