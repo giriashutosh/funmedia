@@ -12,6 +12,7 @@ export const uploadPost = (data) => async (dispatch) => {
     dispatch({type: "UPLOAD_START"})
     try {
         const newPost = await UploadApi.uploadPost(data)
+        //console.log(newPost)
         dispatch({type: "UPLOAD_SUCCESS", data: newPost.data})
     } catch (error) {
         console.log(error)

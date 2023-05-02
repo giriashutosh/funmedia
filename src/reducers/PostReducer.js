@@ -1,11 +1,12 @@
-const PostIntialState = {
-    posts: null,
+const PostInitialState = {
+    posts: [],
     loading: false,
     error: false,
     uploading: false
 }
 
-const postReducer = (state = PostIntialState, action) => {
+const postReducer = (state = PostInitialState, action) => {
+    //console.log(action.data)
     switch (action.type) {
         //belong to PostShare.jsx
         case "UPLOAD_START":
