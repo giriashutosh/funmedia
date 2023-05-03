@@ -11,6 +11,3 @@ export const getTimelinePosts = (id) => async (dispatch) => {
     }
 }
 
-export const likePost = (id, userId) => async (dispatch) => {
-   
-}

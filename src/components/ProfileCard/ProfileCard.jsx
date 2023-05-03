@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const ProfileCard = ({location}) => {
-    const user = useSelector((state) => state.authReducer.authData)
-    console.log(user.followers)
+    const {user}= useSelector((state) => state.authReducer.authData)
+    console.log(user)
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-    const posts = useSelector((state) => state.postReducer.posts)
-   
+    const posts = useSelector((state) => state.postReducer.posts);
+    //console.log(posts)
     return (
         <div className='ProfileCard'>
             <div className='ProfileImages'>
@@ -46,7 +46,7 @@ const ProfileCard = ({location}) => {
                 </div>
                 <hr />
             </div>
-            {location === "profilePage" ? ("" ): (<span><Link to = {`/profile/${user._id}`} style={{ textDecoration: "none", color: "inherit" }}>My Profile</Link></span>)}
+            {location === "profilePage" ? (""): (<span><Link to = {`/profile/${user._id}`} style={{ textDecoration: "none", color: "inherit" }}>My Profile</Link></span>)}
 
         </div>
     )
