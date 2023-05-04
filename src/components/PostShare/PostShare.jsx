@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './PostShare.css'
 import { uploadImage, uploadPost } from '../../actions/UploadAction';
 const PostShare = () => {
-    const  user  = useSelector((state) => state.authReducer.authData)
+    const { user }  = useSelector((state) => state.authReducer.authData)
     const loading = useSelector((state) => state.postReducer.uploading);
     const dispatch = useDispatch();
     const [image, setImage] = useState(null)

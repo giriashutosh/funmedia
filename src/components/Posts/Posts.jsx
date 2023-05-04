@@ -9,7 +9,7 @@ const Posts = () => {
     const dispatch = useDispatch();
     const params = useParams()
     let { posts, loading} = useSelector((state) => state.postReducer)
-    const  user  = useSelector((state) => state.authReducer.authData)
+    const { user }  = useSelector((state) => state.authReducer.authData)
     
     useEffect(() => {
         dispatch(getTimelinePosts(user._id));

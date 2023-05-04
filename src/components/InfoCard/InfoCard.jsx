@@ -11,7 +11,7 @@ const InfoCard = () => {
     const [modalOpened, setModalOpened] = useState(false)
     const profileUserId = useParams();
     console.log(profileUserId)
-    const user = useSelector((state) => state.authReducer.authData)
+    const { user } = useSelector((state) => state.authReducer.authData)
     const [profileUser, setProfileUser] = useState({})
     const dispatch = useDispatch()
     useEffect(() => {
