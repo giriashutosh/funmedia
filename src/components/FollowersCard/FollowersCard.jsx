@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux'
 const FollowersCard = ({location}) => {
   const [modalOpened, setModalOpened] = useState(false)
   const [persons, setPersons] = useState([])
-  const { user } = useSelector((state)=> state.authReducer.authData)
-
+  const  user  = useSelector((state)=> state.authReducer.authData)
+  console.log(user)
 
   useEffect(() => {
     const fetchPersons = async () => {

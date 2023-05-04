@@ -32,6 +32,7 @@ const authReducer = (state = AuthInitialState, action) => {
    
       //Follow and Unfollow
     case "FOLLOW_USER":
+      //console.log(state.authData.user.following)
       return {
         ...state,
         authData: {
